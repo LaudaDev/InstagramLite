@@ -9,16 +9,15 @@ import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
 
-import eu.execom.instagramlite.models.UserPost;
 import eu.execom.instagramlite.repository.UserPostRepository;
-import eu.execom.instagramlite.views.UserPostItemView;
-import eu.execom.instagramlite.views.UserPostItemView_;
+import eu.execom.instagramlite.views.GridPictureItemView;
+import eu.execom.instagramlite.views.GridPictureItemView_;
 
 /**
  * Created by sbratic on 4/20/2016.
  */
 @EBean
-public class FavouritePostsAdapter extends BaseAdapter {
+public class MyPicturesGridAdapter extends BaseAdapter {
 
 
     @Bean
@@ -27,15 +26,14 @@ public class FavouritePostsAdapter extends BaseAdapter {
     @RootContext
     Context context;
 
-
     @Override
     public int getCount() {
-        return userPostRepository.getUserPosts().size();
+        return userPostRepository.getMockDrawable().length;
     }
 
     @Override
     public Object getItem(int position) {
-        return userPostRepository.getUserPosts().get(position);
+        return userPostRepository.getMockDrawable()[position];
     }
 
     @Override
@@ -45,15 +43,15 @@ public class FavouritePostsAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        UserPostItemView userPostItemView;
+        GridPictureItemView gridPictureItemView;
         if (convertView == null) {
-            userPostItemView = UserPostItemView_.build(context);
+            gridPictureItemView = GridPictureItemView_.build(context);
         } else {
-            userPostItemView = (UserPostItemView) convertView;
+            gridPictureItemView = (GridPictureItemView) convertView;
         }
 
-        userPostItemView.bind((UserPost) getItem(position));
+        gridPictureItemView.bind((int) getItem(position));
 
-        return userPostItemView;
+        return gridPictureItemView;
     }
 }

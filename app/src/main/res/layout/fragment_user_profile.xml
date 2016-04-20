@@ -1,7 +1,8 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="eu.execom.instagramlite.fragments.UserProfileFragment">
 
     <ImageView
@@ -14,5 +15,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    
-</FrameLayout>
+    <GridView
+        android:id="@+id/picturesGrid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnWidth="90dp"
+        android:numColumns="auto_fit"></GridView>
+
+
+</LinearLayout>
