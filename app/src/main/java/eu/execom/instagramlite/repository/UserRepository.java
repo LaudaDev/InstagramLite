@@ -4,6 +4,7 @@ import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.sharedpreferences.Pref;
 
 import eu.execom.instagramlite.models.User;
+import eu.execom.instagramlite.models.UserPost;
 import eu.execom.instagramlite.utils.Preferences_;
 
 /**
@@ -76,9 +77,11 @@ public class UserRepository {
      * @return # separated vrednosti korisnika
      */
     private String serializeUser(User user) {
-        final String userString = user.getName() + "#" + user.getEmail() + "#" + user.getPassword() + "#" + user.getImageResId();
+        final StringBuilder userString = new StringBuilder();
 
-        return userString;
+        userString.append(user.getName() + "#" + user.getEmail() + "#" + user.getPassword() + "#" + user.getImageResId());
+
+        return userString.toString();
 
     }
 

@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         if (prefs.loggedIn().getOr(false)) {
-            NavigationActivity_.intent(this).username(userRepository.getUser().getEmail()).start();
+            NavigationActivity_.intent(this).username(userRepository.getUser().getName()).start();
         }
         super.onStart();
     }
@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (isAuthenticated) {
             NavigationActivity_.intent(this)
-                    .username(userRepository.getUser().getEmail()).start();
+                    .username(userRepository.getUser().getName()).start();
             prefs.loggedIn().put(true);
         } else {
             Toast.makeText(this, R.string.login_fail_msg, Toast.LENGTH_LONG).show();

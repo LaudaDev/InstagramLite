@@ -1,5 +1,10 @@
 package eu.execom.instagramlite.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import eu.execom.instagramlite.R;
+
 /**
  * Created by Alex on 4/16/16.
  */
@@ -12,6 +17,8 @@ public class User {
     private String email;
 
     private String password;
+
+    private List<UserPost> favouritePosts = new ArrayList<>();
 
     public User() {
     }
@@ -32,6 +39,9 @@ public class User {
     }
 
     public int getImageResId() {
+        if (imageResId == 0)
+            return R.drawable.aleksandar;
+
         return imageResId;
     }
 
@@ -42,7 +52,6 @@ public class User {
                 ", imageResId=" + imageResId +
                 '}';
     }
-
 
 
     public void setName(String name) {
@@ -67,5 +76,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<UserPost> getFavouritePosts() {
+        return favouritePosts;
+    }
+
+    public void setFavouritePosts(List<UserPost> favouritePosts) {
+        this.favouritePosts = favouritePosts;
     }
 }

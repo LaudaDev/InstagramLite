@@ -10,6 +10,7 @@ import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 
 import eu.execom.instagramlite.R;
+import eu.execom.instagramlite.adapters.FavouritePostsAdapter;
 import eu.execom.instagramlite.adapters.UserPostsAdapter;
 
 @EFragment(R.layout.fragment_post)
@@ -18,14 +19,26 @@ public class PostFragment extends Fragment {
     @ViewById
     ListView listView;
 
+
+    public enum MODE {HOME, FAVOURITE}
+
+
     @Bean
     UserPostsAdapter userPostsAdapter;
+
+    @Bean
+    FavouritePostsAdapter favouritePostsAdapter;
 
 
     @AfterViews
     @UiThread(delay = 100)
     void setAdapter() {
-        listView.setAdapter(userPostsAdapter);
+        final MODE mode = (MODE) getArguments().get("mode");
+        if (mode == MODE.HOME)
+            listView.setAdapter(userPostsAdapter);
+        else
+            listView.setAdapter(favouritePostsAdapter);
+
     }
 
 }
