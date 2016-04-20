@@ -23,29 +23,6 @@ public class HomeFragment extends Fragment {
     @Bean
     UserPostsAdapter userPostsAdapter;
 
-    @ViewById
-    ProgressBar progressBar;
-
-    private int progress;
-
-    @AfterViews
-    @Background
-    void makeProgress() {
-        while (progress <= progressBar.getMax()) {
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            progress += 1;
-            updateProgress();
-        }
-    }
-
-    @UiThread
-    void updateProgress() {
-        progressBar.setProgress(progress);
-    }
 
     @AfterViews
     @UiThread(delay = 100)

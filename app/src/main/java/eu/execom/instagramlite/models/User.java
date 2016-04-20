@@ -9,12 +9,22 @@ public class User {
 
     private int imageResId;
 
+    private String email;
+
+    private String password;
+
     public User() {
     }
 
     public User(String name, int imageResId) {
         this.name = name;
         this.imageResId = imageResId;
+    }
+
+    public User(String name, String password, String email) {
+        this.name = name;
+        this.password = password;
+        this.email = email;
     }
 
     public String getName() {
@@ -31,5 +41,31 @@ public class User {
                 "name='" + name + '\'' +
                 ", imageResId=" + imageResId +
                 '}';
+    }
+
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setImageResId(int imageResId) {
+        this.imageResId = imageResId;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

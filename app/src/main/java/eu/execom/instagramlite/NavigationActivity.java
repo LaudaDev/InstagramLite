@@ -16,14 +16,13 @@ public class NavigationActivity extends AppCompatActivity {
 
     @AfterInject
     void welcomeUser() {
-        if (username != null) {
-            Toast.makeText(NavigationActivity.this,
-                    username, Toast.LENGTH_LONG).show();
-        }
+        Toast.makeText(NavigationActivity.this,
+                String.format(getString(R.string.welcome_login_msg), username), Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onBackPressed() {
+        moveTaskToBack(true);
         super.onBackPressed();
     }
 }

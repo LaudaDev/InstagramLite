@@ -9,4 +9,6 @@ import org.androidannotations.annotations.sharedpreferences.SharedPref;
 public interface Preferences {
 
     boolean loggedIn();
+
+    String user();
 }
