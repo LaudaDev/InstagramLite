@@ -6,7 +6,7 @@
 
     <ImageView
         android:id="@+id/picture"
-        android:layout_width="250px"
-        android:layout_height="250px" />
+        android:layout_width="150dp"
+        android:layout_height="150dp" />
 
 </LinearLayout>

@@ -39,9 +39,9 @@ public class NavigationActivity extends AppCompatActivity {
     }
 
     void setTabs() {
-        tabLayout.getTabAt(0).setText(R.string.my_profile);
+        tabLayout.getTabAt(0).setText(R.string.home);
         tabLayout.getTabAt(1).setText(R.string.favourite_posts);
-        tabLayout.getTabAt(2).setText(R.string.home);
+        tabLayout.getTabAt(2).setText(R.string.my_profile);
     }
 
     @AfterInject

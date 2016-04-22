@@ -40,7 +40,7 @@ public class User {
 
     public int getImageResId() {
         if (imageResId == 0)
-            return R.drawable.aleksandar;
+            return R.drawable.profile_placeholder;
 
         return imageResId;
     }

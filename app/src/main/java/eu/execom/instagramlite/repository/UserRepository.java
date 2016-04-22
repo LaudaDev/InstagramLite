@@ -4,7 +4,6 @@ import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.sharedpreferences.Pref;
 
 import eu.execom.instagramlite.models.User;
-import eu.execom.instagramlite.models.UserPost;
 import eu.execom.instagramlite.utils.Preferences_;
 
 /**

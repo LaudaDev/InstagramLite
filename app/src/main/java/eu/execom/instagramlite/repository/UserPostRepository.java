@@ -32,11 +32,7 @@ public class UserPostRepository {
 
 
         for (int i = 0; i < mockDrawable.length; i++) {
-            if (i % 2 == 0) {
                 mockDrawable[i] = R.drawable.rektorat;
-            } else {
-                mockDrawable[i] = R.drawable.aleksandar;
-            }
         }
     }
 

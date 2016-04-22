@@ -39,11 +39,11 @@ public class NavigationPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return userProfileFragment;
+                return homeFragment;
             case 1:
                 return favouriteFragment;
             case 2:
-                return homeFragment;
+                return userProfileFragment;
             default:
                 return null;
         }

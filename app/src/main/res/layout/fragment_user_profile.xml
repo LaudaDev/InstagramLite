@@ -19,9 +19,9 @@
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="15dp"
             android:fontFamily="sans-serif"
-            android:textSize="30dp"
-            android:layout_margin="15dp"/>
+            android:textSize="30dp" />
 
     </LinearLayout>
 
@@ -33,32 +33,20 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:text="125 \n friends" />
+            style="@style/TextViewDefault"
+            android:text="@string/mock_friends" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:text="7 \n followers" />
+            style="@style/TextViewDefault"
+            android:text="@string/mock_followers" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:text="20 \n photos" />
+            style="@style/TextViewDefault"
+            android:text="@string/mock_photos" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:text="32 \n videos" />
+            style="@style/TextViewDefault"
+            android:text="@string/mock_videos" />
     </LinearLayout>
 
     <GridView
