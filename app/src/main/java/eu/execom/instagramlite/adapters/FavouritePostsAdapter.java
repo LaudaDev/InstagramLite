@@ -20,7 +20,6 @@ import eu.execom.instagramlite.views.UserPostItemView_;
 @EBean
 public class FavouritePostsAdapter extends BaseAdapter {
 
-
     @Bean
     UserPostRepository userPostRepository;
 
@@ -56,4 +55,5 @@ public class FavouritePostsAdapter extends BaseAdapter {
 
         return userPostItemView;
     }
+
 }

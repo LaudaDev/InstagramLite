@@ -10,7 +10,6 @@ import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 
 import eu.execom.instagramlite.R;
-import eu.execom.instagramlite.adapters.FavouritePostsAdapter;
 import eu.execom.instagramlite.adapters.UserPostsAdapter;
 
 @EFragment(R.layout.fragment_post)

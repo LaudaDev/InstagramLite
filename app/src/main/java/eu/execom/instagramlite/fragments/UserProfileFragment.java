@@ -42,6 +42,6 @@ public class UserProfileFragment extends Fragment {
         profileImage.setImageResource(user.getImageResId());
         name.setText(user.getName());
         picturesGrid.setAdapter(myPicturesGridAdapter);
-
     }
+
 }

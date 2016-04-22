@@ -11,4 +11,5 @@ public interface Preferences {
     boolean loggedIn();
 
     String user();
+
 }

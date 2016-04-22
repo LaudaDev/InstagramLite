@@ -19,7 +19,6 @@ import eu.execom.instagramlite.views.GridPictureItemView_;
 @EBean
 public class MyPicturesGridAdapter extends BaseAdapter {
 
-
     @Bean
     UserPostRepository userPostRepository;
 
@@ -54,4 +53,5 @@ public class MyPicturesGridAdapter extends BaseAdapter {
 
         return gridPictureItemView;
     }
+
 }

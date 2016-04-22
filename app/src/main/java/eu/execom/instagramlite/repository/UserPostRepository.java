@@ -27,12 +27,12 @@ public class UserPostRepository {
                 new User("Aleksandar", R.drawable.aleksandar);
         for (int i = 0; i < 10; i++) {
             userPosts.add(new UserPost(user,
-                    "Workshop in progress!", R.drawable.rektorat));
+                    "Workshop in progress!", i % 2 == 0 ? R.drawable.cupcake : R.drawable.execom));
         }
 
 
         for (int i = 0; i < mockDrawable.length; i++) {
-                mockDrawable[i] = R.drawable.rektorat;
+            mockDrawable[i] = i % 2 == 0 ? R.drawable.cupcake : R.drawable.execom;
         }
     }
 

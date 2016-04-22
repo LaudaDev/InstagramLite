@@ -8,7 +8,6 @@ import eu.execom.instagramlite.utils.Preferences_;
 
 /**
  * Created by sbratic on 4/20/2016.
- * <p/>
  * Class that handles user registration and authentication
  */
 @EBean(scope = EBean.Scope.Singleton)

@@ -54,4 +54,5 @@ public class UserPostsAdapter extends BaseAdapter {
 
         return userPostItemView;
     }
+
 }
