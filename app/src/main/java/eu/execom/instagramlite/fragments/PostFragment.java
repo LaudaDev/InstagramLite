@@ -19,25 +19,14 @@ public class PostFragment extends Fragment {
     @ViewById
     ListView listView;
 
-
-    public enum MODE {HOME, FAVOURITE}
-
-
     @Bean
     UserPostsAdapter userPostsAdapter;
-
-    @Bean
-    FavouritePostsAdapter favouritePostsAdapter;
 
 
     @AfterViews
     @UiThread(delay = 100)
     void setAdapter() {
-        final MODE mode = (MODE) getArguments().get("mode");
-        if (mode == MODE.HOME)
-            listView.setAdapter(userPostsAdapter);
-        else
-            listView.setAdapter(favouritePostsAdapter);
+        listView.setAdapter(userPostsAdapter);
 
     }
 

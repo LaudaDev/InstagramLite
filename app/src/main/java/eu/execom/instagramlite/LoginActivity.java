@@ -1,5 +1,6 @@
 package eu.execom.instagramlite;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,11 +38,11 @@ public class LoginActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onStart() {
+    protected void onResume() {
         if (prefs.loggedIn().getOr(false)) {
             NavigationActivity_.intent(this).username(userRepository.getUser().getName()).start();
         }
-        super.onStart();
+        super.onResume();
     }
 
     @Click
@@ -49,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         final boolean isAuthenticated = userRepository.authenticate(email.getText().toString(), password.getText().toString());
 
         if (isAuthenticated) {
+            resetFields();
             NavigationActivity_.intent(this)
                     .username(userRepository.getUser().getName()).start();
             prefs.loggedIn().put(true);
@@ -61,6 +63,12 @@ public class LoginActivity extends AppCompatActivity {
 
     @Click
     void register() {
-        RegisterActivity_.intent(this).start();
+        resetFields();
+        RegisterActivity_.intent(this).flags(Intent.FLAG_ACTIVITY_NO_HISTORY).start();
+    }
+
+    void resetFields() {
+        email.setText("");
+        password.setText("");
     }
 }

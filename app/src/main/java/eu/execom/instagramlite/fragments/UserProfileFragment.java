@@ -16,7 +16,7 @@ import eu.execom.instagramlite.models.User;
 import eu.execom.instagramlite.repository.UserRepository;
 
 /**
- * Fragment koji sadrzi podake vezane za korisnika
+ * User that handles profile data
  */
 @EFragment(R.layout.fragment_user_profile)
 public class UserProfileFragment extends Fragment {

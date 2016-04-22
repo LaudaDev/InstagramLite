@@ -16,7 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".NavigationActivity_" />
-        <activity android:name=".RegisterActivity_"></activity>
+        <activity android:name=".RegisterActivity_" />
     </application>
 
 </manifest>

@@ -10,8 +10,10 @@ import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
+import org.androidannotations.annotations.sharedpreferences.Pref;
 
 import eu.execom.instagramlite.repository.UserRepository;
+import eu.execom.instagramlite.utils.Preferences_;
 
 @EActivity(R.layout.activity_register)
 public class RegisterActivity extends AppCompatActivity {
@@ -28,11 +30,9 @@ public class RegisterActivity extends AppCompatActivity {
     @ViewById
     EditText passwordEditText;
 
+    @Pref
+    Preferences_ prefs;
 
-    @AfterViews
-    public void afterViews() {
-
-    }
 
     @Click(R.id.registerButton)
     void register() {
@@ -42,8 +42,17 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(this, getString(R.string.register_fail_msg), Toast.LENGTH_LONG).show();
         else {
             Toast.makeText(this, getString(R.string.register_success_msg), Toast.LENGTH_LONG).show();
-            finish();
+            resetFields();
+            prefs.loggedIn().put(true);
+            NavigationActivity_.intent(this)
+                    .username(userRepository.getUser().getName()).start();
         }
+    }
+
+    void resetFields() {
+        nameEditText.setText("");
+        emailEditText.setText("");
+        passwordEditText.setText("");
     }
 
 }

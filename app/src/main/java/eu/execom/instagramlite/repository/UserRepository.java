@@ -9,7 +9,7 @@ import eu.execom.instagramlite.utils.Preferences_;
 /**
  * Created by sbratic on 4/20/2016.
  * <p/>
- * Klasa koja rukuje registracijom, logovanjem i dobavaljenjem korisnika
+ * Class that handles user registration and authentication
  */
 @EBean(scope = EBean.Scope.Singleton)
 public class UserRepository {
@@ -21,9 +21,9 @@ public class UserRepository {
 
 
     /**
-     * Dobavljanja podataka o korisniku preko "REST-a"
+     * Rest mocking of user get
      *
-     * @return korisnik ukoliko je pronadjen
+     * @return user if uuser is registered
      */
     public User getUser() {
         if (user == null) {
@@ -33,12 +33,12 @@ public class UserRepository {
     }
 
     /**
-     * Imitiranje registracije korisnika za Rest
+     * Mocks rest registration call
      *
-     * @param name     ime korisnika
-     * @param email    email korisnika
-     * @param password sifra korisnika
-     * @return boolean da li je user uspesno registrovan ili ne
+     * @param name
+     * @param email
+     * @param password
+     * @return user successfully registered or not
      */
     public boolean registerUser(String name, String email, String password) {
 
@@ -52,11 +52,11 @@ public class UserRepository {
     }
 
     /**
-     * Mimika autentikacije
+     * Authentication mocking
      *
      * @param email
      * @param password
-     * @return da li postoji korisnik
+     * @return user exists
      */
     public boolean authenticate(String email, String password) {
         user = getUser();
@@ -70,25 +70,23 @@ public class UserRepository {
     }
 
     /**
-     * Persistencija korisnika nakon registracije
+     * User serialization
      *
      * @param user
-     * @return # separated vrednosti korisnika
+     * @return # separated values
      */
     private String serializeUser(User user) {
-        final StringBuilder userString = new StringBuilder();
+        final String userString = user.getName() + "#" + user.getEmail() + "#" + user.getPassword() + "#" + user.getImageResId();
 
-        userString.append(user.getName() + "#" + user.getEmail() + "#" + user.getPassword() + "#" + user.getImageResId());
-
-        return userString.toString();
+        return userString;
 
     }
 
     /**
-     * Deserijalizacija korisnika koji se registrovao
+     * Deserialization of user
      *
-     * @param userString # separated vrednosti korisnika
-     * @return objekat korisnik
+     * @param userString # separated values
+     * @return user object
      */
     private User deserializeUser(String userString) {
 
@@ -112,5 +110,12 @@ public class UserRepository {
         }
 
         return user;
+    }
+
+    /**
+     * Logging out the user
+     */
+    public void invalidateSession() {
+        preferences.loggedIn().put(false);
     }
 }

@@ -8,7 +8,7 @@
     <string name="name">Name</string>
     <string name="email">Email</string>
     <string name="register_fail_msg">Unsuccessful registration, please provide valid credentials.</string>
-    <string name="register_success_msg">Registration success, please log in.</string>
+    <string name="register_success_msg">Registration success.</string>
     <string name="login_success_msg">Successfully logged in!</string>
     <string name="login_fail_msg">Login failed, please try again!</string>
     <string name="welcome_login_msg">Welcome %s!</string>
@@ -19,4 +19,5 @@
     <string name="mock_followers">7 \n followers</string>
     <string name="mock_photos">20 \n photos</string>
     <string name="mock_videos">32 \n videos</string>
+    <string name="log_out">Log out</string>
 </resources>
