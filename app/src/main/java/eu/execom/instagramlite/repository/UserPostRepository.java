@@ -16,8 +16,8 @@ import eu.execom.instagramlite.models.UserPost;
 @EBean
 public class UserPostRepository {
 
-    private String kahriman = "http://www.proko.rs/gal/images/leptiri/araschnia-levana-p-.jpg";
-    private String ja = "http://www.proko.rs/gal/images/leptiri/araschnia-levana-p-.jpg";
+    private String kahriman = "https://scontent-vie1-1.xx.fbcdn.net/v/t1.0-9/12002969_1024753717556682_6562491396931476827_n.jpg";
+    private String ja = "https://pbs-0.twimg.com/media/CgK7H2QUEAAcpjo.jpg";
 
     private List<UserPost> userPosts;
 

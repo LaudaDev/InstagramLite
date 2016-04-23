@@ -53,4 +53,10 @@ public class RegisterActivity extends AppCompatActivity {
         password.setText("");
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.activity_enter,
+                R.anim.activity_exit);
+    }
 }
