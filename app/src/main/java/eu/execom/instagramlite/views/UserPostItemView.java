@@ -1,9 +1,12 @@
 package eu.execom.instagramlite.views;
 
 import android.content.Context;
+import android.net.Uri;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.facebook.drawee.view.SimpleDraweeView;
 
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
@@ -17,14 +20,16 @@ import eu.execom.instagramlite.models.UserPost;
 @EViewGroup(R.layout.view_item_user_post)
 public class UserPostItemView extends LinearLayout {
 
+
+
     @ViewById
-    ImageView userImage;
+    SimpleDraweeView userImage;
 
     @ViewById
     TextView username;
 
     @ViewById
-    ImageView image;
+    SimpleDraweeView image;
 
     @ViewById
     TextView description;
@@ -36,7 +41,7 @@ public class UserPostItemView extends LinearLayout {
     public void bind(UserPost userPost) {
         userImage.setImageResource(userPost.getUser().getImageResId());
         username.setText(userPost.getUser().getName());
-        image.setImageResource(userPost.getImageResId());
+        image.setImageURI(Uri.parse(userPost.getImageResId()));
         description.setText(userPost.getDescription());
     }
 }

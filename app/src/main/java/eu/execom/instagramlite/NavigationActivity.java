@@ -1,16 +1,21 @@
 package eu.execom.instagramlite;
 
 import android.os.Handler;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import org.androidannotations.annotations.AfterInject;
+import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
+import org.androidannotations.annotations.ViewById;
 
+import eu.execom.instagramlite.adapters.TabAdapter;
 import eu.execom.instagramlite.repository.UserRepository;
 
 @EActivity(R.layout.activity_navigation)
@@ -24,6 +29,21 @@ public class NavigationActivity extends AppCompatActivity {
 
     @Bean
     UserRepository userRepository;
+
+    @ViewById
+    TabLayout tabLayout;
+
+    @ViewById
+    ViewPager pager;
+
+    TabAdapter adapter;
+
+    @AfterViews
+    void setUpTabs() {
+        adapter = new TabAdapter(this);
+        pager.setAdapter(adapter);
+        tabLayout.setupWithViewPager(pager);
+    }
 
     @AfterInject
     void welcomeUser() {

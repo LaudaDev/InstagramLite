@@ -10,7 +10,7 @@ android {
     defaultConfig {
         applicationId "eu.execom.instagramlite"
         minSdkVersion 15
-        targetSdkVersion 23
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
     }
@@ -30,6 +30,7 @@ dependencies {
     compile "com.android.support:appcompat-v7:$ASVersion"
     compile "com.android.support:support-v4:$ASVersion"
     compile "com.android.support:design:$ASVersion"
+    compile 'com.facebook.fresco:fresco:0.9.0+'
 }
 
 apt {

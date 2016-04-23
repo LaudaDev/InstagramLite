@@ -9,15 +9,15 @@ public class UserPost {
 
     private String description;
 
-    private int imageResId;
+    private String imageRes;
 
     public UserPost() {
     }
 
-    public UserPost(User user, String description, int imageResId) {
+    public UserPost(User user, String description, String imageResId) {
         this.user = user;
         this.description = description;
-        this.imageResId = imageResId;
+        this.imageRes = imageResId;
     }
 
     public User getUser() {
@@ -28,8 +28,8 @@ public class UserPost {
         return description;
     }
 
-    public int getImageResId() {
-        return imageResId;
+    public String getImageResId() {
+        return imageRes;
     }
 
     @Override
@@ -37,7 +37,8 @@ public class UserPost {
         return "UserPost{" +
                 "user=" + user +
                 ", description='" + description + '\'' +
-                ", imageResId=" + imageResId +
+                ", imageResId=" + imageRes
+                +
                 '}';
     }
 }

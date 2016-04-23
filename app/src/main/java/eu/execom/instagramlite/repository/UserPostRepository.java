@@ -16,6 +16,9 @@ import eu.execom.instagramlite.models.UserPost;
 @EBean
 public class UserPostRepository {
 
+    private String kahriman = "http://www.proko.rs/gal/images/leptiri/araschnia-levana-p-.jpg";
+    private String ja = "http://www.proko.rs/gal/images/leptiri/araschnia-levana-p-.jpg";
+
     private List<UserPost> userPosts;
 
     private int[] mockDrawable = new int[20];
@@ -27,7 +30,7 @@ public class UserPostRepository {
                 new User("Aleksandar", R.drawable.aleksandar);
         for (int i = 0; i < 10; i++) {
             userPosts.add(new UserPost(user,
-                    "Workshop in progress!", i % 2 == 0 ? R.drawable.cupcake : R.drawable.execom));
+                    "Workshop in progress!", i % 2 == 0 ? kahriman : ja));
         }
 
 
