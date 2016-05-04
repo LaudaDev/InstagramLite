@@ -26,7 +26,6 @@ public class PostFragment extends Fragment {
     @UiThread(delay = 100)
     void setAdapter() {
         listView.setAdapter(userPostsAdapter);
-
     }
 
 }

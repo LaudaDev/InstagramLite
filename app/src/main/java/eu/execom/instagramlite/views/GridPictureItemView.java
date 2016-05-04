@@ -18,7 +18,6 @@ public class GridPictureItemView extends LinearLayout {
     @ViewById
     ImageView picture;
 
-
     public GridPictureItemView(Context context) {
         super(context);
     }
@@ -26,4 +25,5 @@ public class GridPictureItemView extends LinearLayout {
     public void bind(int drawable) {
         picture.setImageResource(drawable);
     }
+
 }

@@ -39,7 +39,6 @@ public class UserProfileFragment extends Fragment {
     @AfterViews
     void afterViews() {
         final User user = userRepository.getUser();
-//        profileImage.setImageResource(user.getImageResId());
         name.setText(user.getUsername());
         picturesGrid.setAdapter(myPicturesGridAdapter);
     }

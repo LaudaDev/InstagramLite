@@ -1,13 +1,9 @@
 package eu.execom.instagramlite.adapters;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v7.app.AppCompatActivity;
-
-import org.androidannotations.annotations.EBean;
 
 import eu.execom.instagramlite.fragments.PostFragment_;
 import eu.execom.instagramlite.fragments.UserProfileFragment_;
