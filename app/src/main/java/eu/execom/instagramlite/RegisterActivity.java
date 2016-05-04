@@ -11,6 +11,7 @@ import org.androidannotations.annotations.EditorAction;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.sharedpreferences.Pref;
 
+import eu.execom.instagramlite.models.User;
 import eu.execom.instagramlite.repository.UserRepository;
 import eu.execom.instagramlite.utils.Preferences_;
 
@@ -21,7 +22,7 @@ public class RegisterActivity extends AppCompatActivity {
     UserRepository userRepository;
 
     @ViewById
-    EditText name;
+    EditText username;
 
     @ViewById
     EditText email;
@@ -35,7 +36,11 @@ public class RegisterActivity extends AppCompatActivity {
     @EditorAction(R.id.password)
     @Click(R.id.registerButton)
     void register() {
-        final boolean success = userRepository.registerUser(name.getText().toString(), email.getText().toString(), password.getText().toString());
+        final User user = new User();
+        user.setEmail(email.getText().toString());
+        user.setPassword(password.getText().toString());
+        user.setUsername(username.getText().toString());
+        final boolean success = userRepository.registerUser(user);
 
         if (!success)
             Toast.makeText(this, getString(R.string.register_fail_msg), Toast.LENGTH_LONG).show();
@@ -43,12 +48,12 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(this, getString(R.string.register_success_msg), Toast.LENGTH_LONG).show();
             resetFields();
             prefs.loggedIn().put(true);
-            NavigationActivity_.intent(this).username(userRepository.getUser().getName()).start();
+            NavigationActivity_.intent(this).username(userRepository.getUser().getUsername()).start();
         }
     }
 
     void resetFields() {
-        name.setText("");
+        username.setText("");
         email.setText("");
         password.setText("");
     }
@@ -56,7 +61,5 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(R.anim.activity_enter,
-                R.anim.activity_exit);
     }
 }

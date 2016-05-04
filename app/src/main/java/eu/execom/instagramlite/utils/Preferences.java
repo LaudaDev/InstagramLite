@@ -10,6 +10,14 @@ public interface Preferences {
 
     boolean loggedIn();
 
-    String user();
+    boolean registered();
+
+    String username();
+
+    String password();
+
+    String email();
+
+    String imageUrl();
 
 }

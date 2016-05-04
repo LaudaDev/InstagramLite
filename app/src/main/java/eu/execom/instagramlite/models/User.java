@@ -3,16 +3,14 @@ package eu.execom.instagramlite.models;
 import java.util.ArrayList;
 import java.util.List;
 
-import eu.execom.instagramlite.R;
-
 /**
  * Created by Alex on 4/16/16.
  */
 public class User {
 
-    private String name;
+    private String username;
 
-    private int imageResId;
+    private String imageUrl;
 
     private String email;
 
@@ -23,43 +21,26 @@ public class User {
     public User() {
     }
 
-    public User(String name, int imageResId) {
-        this.name = name;
-        this.imageResId = imageResId;
-    }
-
     public User(String name, String password, String email) {
-        this.name = name;
+        this.username = name;
         this.password = password;
         this.email = email;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public int getImageResId() {
-        if (imageResId == 0)
-            return R.drawable.profile_placeholder;
-
-        return imageResId;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", imageResId=" + imageResId +
-                '}';
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setImageResId(int imageResId) {
-        this.imageResId = imageResId;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getEmail() {

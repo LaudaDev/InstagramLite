@@ -18,15 +18,17 @@ public class UserRepository {
     @Pref
     Preferences_ preferences;
 
-
     /**
      * Rest mocking of user get
      *
      * @return user if uuser is registered
      */
     public User getUser() {
+        if (!preferences.registered().getOr(false)) {
+            return null;
+        }
         if (user == null) {
-            user = deserializeUser(preferences.user().get());
+            deserializeUser();
         }
         return user;
     }
@@ -34,16 +36,19 @@ public class UserRepository {
     /**
      * Mocks rest registration call
      *
-     * @param name
-     * @param email
-     * @param password
+     * @param user the user returned from the server
      * @return user successfully registered or not
      */
-    public boolean registerUser(String name, String email, String password) {
+    public boolean registerUser(User user) {
 
-        if (name != null && email != null && password != null) {
-            user = new User(name, email, password);
-            preferences.user().put(serializeUser(user));
+        if (user != null) {
+            preferences.username().put(user.getUsername());
+            preferences.email().put(user.getEmail());
+            preferences.password().put(user.getPassword());
+            preferences.imageUrl().put(user.getImageUrl());
+            preferences.loggedIn().put(true);
+            preferences.registered().put(true);
+            this.user = user;
             return true;
         }
 
@@ -58,57 +63,26 @@ public class UserRepository {
      * @return user exists
      */
     public boolean authenticate(String email, String password) {
-        user = getUser();
-        if (user == null)
-            return false;
-
-        if (email.equals(user.getEmail()) && password.equals(user.getPassword()))
-            return true;
-
-        return false;
-    }
-
-    /**
-     * User serialization
-     *
-     * @param user
-     * @return # separated values
-     */
-    private String serializeUser(User user) {
-        final String userString = user.getName() + "#" + user.getEmail() + "#" + user.getPassword() + "#" + user.getImageResId();
-
-        return userString;
-
+        deserializeUser();
+        // true if user exists and the credentials are valid (android studio made me write this way)
+        return user != null && email.equals(user.getEmail()) && password.equals(user.getPassword());
     }
 
     /**
      * Deserialization of user
      *
-     * @param userString # separated values
      * @return user object
      */
-    private User deserializeUser(String userString) {
-
-        if (userString == null)
-            return null;
-
-
-        final String[] userFields = userString.split("#");
-
-        if (userFields.length < 3)
-            return null;
-
-
-        final User user = new User();
-        user.setName(userFields[0]);
-        user.setEmail(userFields[1]);
-        user.setPassword(userFields[2]);
-
-        if (userFields.length > 3) {
-            user.setImageResId(Integer.parseInt(userFields[3]));
+    private void deserializeUser() {
+        // if the user is not registered no need to deserialie
+        if (!preferences.registered().getOr(false)) {
+            return;
         }
-
-        return user;
+        user = new User();
+        user.setEmail(preferences.email().get());
+        user.setUsername(preferences.username().get());
+        user.setPassword(preferences.password().get());
+        user.setImageUrl(preferences.imageUrl().get());
     }
 
     /**

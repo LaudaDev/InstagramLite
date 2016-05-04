@@ -1,10 +1,7 @@
 package eu.execom.instagramlite;
 
-import android.animation.ObjectAnimator;
 import android.content.Intent;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,24 +45,10 @@ public class LoginActivity extends AppCompatActivity {
     @ViewById
     RelativeLayout container;
 
-    @Click
-    void animate() {
-//        email.startAnimation(animation);
-        Snackbar
-                .make(container, "Jeeeeeej", Snackbar.LENGTH_LONG)
-                .setAction("Akcija", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        login.startAnimation(animation);
-                    }
-                })
-                .show();
-    }
-
     @Override
     protected void onResume() {
-        if (prefs.loggedIn().getOr(false)) {
-            NavigationActivity_.intent(this).username(userRepository.getUser().getName()).start();
+        if (prefs.loggedIn().getOr(false) && userRepository.getUser() != null) {
+            NavigationActivity_.intent(this).username(userRepository.getUser().getUsername()).start();
         }
         super.onResume();
     }
@@ -77,8 +60,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (isAuthenticated) {
             resetFields();
-            NavigationActivity_.intent(this)
-                    .username(userRepository.getUser().getName()).start();
+            NavigationActivity_.intent(this).username(userRepository.getUser().getUsername()).start();
             prefs.loggedIn().put(true);
         } else {
             Toast.makeText(this, R.string.login_fail_msg, Toast.LENGTH_LONG).show();
@@ -88,19 +70,12 @@ public class LoginActivity extends AppCompatActivity {
     @Click
     void register() {
         resetFields();
-        RegisterActivity_.intent(this).
-                flags(Intent.FLAG_ACTIVITY_NO_HISTORY).
-                start().withAnimation(R.anim.activity_enter, R.anim.activity_exit);
+        RegisterActivity_.intent(this).flags(Intent.FLAG_ACTIVITY_NO_HISTORY).start();
     }
 
     void resetFields() {
         email.setText("");
         password.setText("");
-    }
-
-    @Click
-    void fab() {
-        animate();
     }
 
 }
