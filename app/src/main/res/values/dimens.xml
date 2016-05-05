@@ -4,4 +4,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="card_margin">8dp</dimen>
     <dimen name="card_items_margin">8dp</dimen>
+    <dimen name="profile_line_thickness">.7dp</dimen>
+    <dimen name="profile_line_margin">16dp</dimen>
 </resources>

@@ -1,9 +1,12 @@
 package eu.execom.instagramlite.fragments;
 
+import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.facebook.drawee.view.SimpleDraweeView;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -25,7 +28,7 @@ public class UserProfileFragment extends Fragment {
     UserRepository userRepository;
 
     @ViewById
-    ImageView profileImage;
+    SimpleDraweeView profileImage;
 
     @ViewById
     TextView name;
@@ -41,6 +44,9 @@ public class UserProfileFragment extends Fragment {
         final User user = userRepository.getUser();
         name.setText(user.getUsername());
         picturesGrid.setAdapter(myPicturesGridAdapter);
+        if (user.getImageUrl().isEmpty()) {
+            profileImage.setImageURI(Uri.parse(user.getImageUrl()));
+        }
     }
 
 }
