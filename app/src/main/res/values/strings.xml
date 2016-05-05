@@ -15,9 +15,9 @@
     <string name="my_profile">My Profile</string>
     <string name="favourite_posts">Favourite</string>
     <string name="home">Home</string>
-    <string name="mock_friends">125 \n friends</string>
-    <string name="mock_followers">7 \n followers</string>
-    <string name="mock_photos">20 \n photos</string>
-    <string name="mock_videos">32 \n videos</string>
+    <string name="friends">friends</string>
+    <string name="followers">followers</string>
+    <string name="photos">photos</string>
+    <string name="videos">videos</string>
     <string name="log_out">Log out</string>
 </resources>
