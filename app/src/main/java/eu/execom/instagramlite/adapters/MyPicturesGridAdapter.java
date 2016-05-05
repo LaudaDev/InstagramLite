@@ -14,6 +14,9 @@ import eu.execom.instagramlite.views.GridPictureItemView;
 import eu.execom.instagramlite.views.GridPictureItemView_;
 
 /**
+ * The {@link MyPicturesGridAdapter} that provides images for the grid view
+ * on the user profile fragment.
+ *
  * Created by sbratic on 4/20/2016.
  */
 @EBean

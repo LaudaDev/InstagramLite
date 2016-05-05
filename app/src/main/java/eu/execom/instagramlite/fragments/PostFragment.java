@@ -21,7 +21,6 @@ public class PostFragment extends Fragment {
     @Bean
     UserPostsAdapter userPostsAdapter;
 
-
     @AfterViews
     @UiThread(delay = 100)
     void setAdapter() {

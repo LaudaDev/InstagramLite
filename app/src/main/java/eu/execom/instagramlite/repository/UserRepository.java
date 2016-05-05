@@ -21,7 +21,7 @@ public class UserRepository {
     /**
      * Rest mocking of user get
      *
-     * @return user if uuser is registered
+     * @return user if user is registered
      */
     public User getUser() {
         if (!preferences.registered().getOr(false)) {
@@ -56,22 +56,21 @@ public class UserRepository {
     }
 
     /**
-     * Authentication mocking
+     * Authentication mocking, for now it just works with the shared preferences.
      *
      * @param email
      * @param password
-     * @return user exists
+     * @return true if user exists
      */
     public boolean authenticate(String email, String password) {
         deserializeUser();
+
         // true if user exists and the credentials are valid (android studio made me write this way)
         return user != null && email.equals(user.getEmail()) && password.equals(user.getPassword());
     }
 
     /**
-     * Deserialization of user
-     *
-     * @return user object
+     * Deserialization of user, if there is a registered user
      */
     private void deserializeUser() {
         // if the user is not registered no need to deserialie

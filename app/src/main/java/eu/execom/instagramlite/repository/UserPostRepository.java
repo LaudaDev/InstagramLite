@@ -12,6 +12,9 @@ import eu.execom.instagramlite.models.User;
 import eu.execom.instagramlite.models.UserPost;
 
 /**
+ * Class that serves as an in memory storage, so we have some data to test the design of our
+ * application.
+ *
  * Created by Alex on 4/16/16.
  */
 @EBean
@@ -19,6 +22,7 @@ public class UserPostRepository {
 
     @Bean
     UserRepository userRepository;
+
     private String kahriman = "https://scontent-vie1-1.xx.fbcdn.net/t31.0-8/11228062_1024753717556682_6562491396931476827_o.jpg";
     private String ja = "https://pbs-0.twimg.com/media/CgK7H2QUEAAcpjo.jpg";
 
@@ -35,7 +39,6 @@ public class UserPostRepository {
                     "Workshop in progress!", i % 2 == 0 ? kahriman : ja));
         }
 
-
         for (int i = 0; i < mockDrawable.length; i++) {
             mockDrawable[i] = i % 2 == 0 ? R.drawable.cupcake : R.drawable.execom;
         }
@@ -48,4 +51,5 @@ public class UserPostRepository {
     public int[] getMockDrawable() {
         return mockDrawable;
     }
+
 }

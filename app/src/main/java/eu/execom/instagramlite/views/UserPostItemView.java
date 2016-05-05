@@ -16,6 +16,8 @@ import eu.execom.instagramlite.models.UserPost;
 import eu.execom.instagramlite.utils.Preferences_;
 
 /**
+ * {@link UserPostItemView} represents the items in the posts and favourites lists.
+ *
  * Created by Alex on 4/16/16.
  */
 @EViewGroup(R.layout.view_item_user_post)
@@ -41,11 +43,12 @@ public class UserPostItemView extends FrameLayout {
     }
 
     public void bind(UserPost userPost) {
+        // check if user image exists, and if so, set it in the view.
         if (userPost.getUser().getImageUrl() != null && !userPost.getUser().getImageUrl().isEmpty()) {
             userImage.setImageURI(Uri.parse(userPost.getUser().getImageUrl()));
         }
         username.setText(userPost.getUser().getUsername());
-        image.setImageURI(Uri.parse(userPost.getImageResId()));
+        image.setImageURI(Uri.parse(userPost.getImageRes()));
         description.setText(userPost.getDescription());
     }
 

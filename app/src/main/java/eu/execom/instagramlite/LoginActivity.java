@@ -47,7 +47,9 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
+        // If the user is already logged in, just transfer him to the navigation activity.
         if (prefs.loggedIn().getOr(false) && userRepository.getUser() != null) {
+            // Activity transition, the Android Annotations way.
             NavigationActivity_.intent(this).username(userRepository.getUser().getUsername()).start();
         }
         super.onResume();
@@ -56,12 +58,14 @@ public class LoginActivity extends AppCompatActivity {
     @EditorAction(R.id.password)
     @Click
     void login() {
+        // Check if the user has entered valid credentials.
         final boolean isAuthenticated = userRepository.authenticate(email.getText().toString(), password.getText().toString());
 
         if (isAuthenticated) {
             resetFields();
-            NavigationActivity_.intent(this).username(userRepository.getUser().getUsername()).start();
             prefs.loggedIn().put(true);
+            // Activity transition, the Android Annotations way.
+            NavigationActivity_.intent(this).username(userRepository.getUser().getUsername()).start();
         } else {
             Toast.makeText(this, R.string.login_fail_msg, Toast.LENGTH_LONG).show();
         }
@@ -70,6 +74,7 @@ public class LoginActivity extends AppCompatActivity {
     @Click
     void register() {
         resetFields();
+        // Activity transition, the Android Annotations way.
         RegisterActivity_.intent(this).flags(Intent.FLAG_ACTIVITY_NO_HISTORY).start();
     }
 

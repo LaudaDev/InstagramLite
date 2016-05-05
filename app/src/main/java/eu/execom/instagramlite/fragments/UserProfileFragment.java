@@ -19,7 +19,7 @@ import eu.execom.instagramlite.models.User;
 import eu.execom.instagramlite.repository.UserRepository;
 
 /**
- * User that handles profile data
+ * Used for the tab that shows users profile.
  */
 @EFragment(R.layout.fragment_user_profile)
 public class UserProfileFragment extends Fragment {
@@ -44,7 +44,9 @@ public class UserProfileFragment extends Fragment {
         final User user = userRepository.getUser();
         name.setText(user.getUsername());
         picturesGrid.setAdapter(myPicturesGridAdapter);
-        if (user.getImageUrl().isEmpty()) {
+
+        // check if user image exists, and if so, set it in the view.
+        if (user.getImageUrl() != null && user.getImageUrl().isEmpty()) {
             profileImage.setImageURI(Uri.parse(user.getImageUrl()));
         }
     }

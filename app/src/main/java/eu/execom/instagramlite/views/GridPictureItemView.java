@@ -10,6 +10,8 @@ import org.androidannotations.annotations.ViewById;
 import eu.execom.instagramlite.R;
 
 /**
+ * {@link GridPictureItemView} represents the items in the grid view on the user profile fragment.
+ *
  * Created by sbratic on 4/20/2016.
  */
 @EViewGroup(R.layout.view_item_picture_grid)

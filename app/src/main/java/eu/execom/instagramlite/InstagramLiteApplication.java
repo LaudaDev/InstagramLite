@@ -18,6 +18,8 @@ public class InstagramLiteApplication extends Application {
         super.onCreate();
         ImagePipelineConfig config = ImagePipelineConfig.newBuilder(this)
                 .setDownsampleEnabled(true).build();
+
+        // Initialization of the Fresco library. This is needed if you want to use Fresco.
         Fresco.initialize(this, config);
     }
 

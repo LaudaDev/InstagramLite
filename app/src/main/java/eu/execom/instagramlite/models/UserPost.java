@@ -24,12 +24,24 @@ public class UserPost {
         return user;
     }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public String getDescription() {
         return description;
     }
 
-    public String getImageResId() {
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getImageRes() {
         return imageRes;
+    }
+
+    public void setImageRes(String imageRes) {
+        this.imageRes = imageRes;
     }
 
     @Override
