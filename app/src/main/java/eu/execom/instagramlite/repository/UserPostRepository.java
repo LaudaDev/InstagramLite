@@ -14,7 +14,7 @@ import eu.execom.instagramlite.models.UserPost;
 /**
  * Class that serves as an in memory storage, so we have some data to test the design of our
  * application.
- *
+ * <p/>
  * Created by Alex on 4/16/16.
  */
 @EBean

@@ -17,7 +17,7 @@ import eu.execom.instagramlite.utils.Preferences_;
 
 /**
  * {@link UserPostItemView} represents the items in the posts and favourites lists.
- *
+ * <p/>
  * Created by Alex on 4/16/16.
  */
 @EViewGroup(R.layout.view_item_user_post)

@@ -16,7 +16,7 @@ import eu.execom.instagramlite.views.UserPostItemView_;
 
 /**
  * Adapter for our posts lists, done in the Android Annotations way.
- *
+ * <p/>
  * Created by Alex on 4/16/16.
  */
 @EBean

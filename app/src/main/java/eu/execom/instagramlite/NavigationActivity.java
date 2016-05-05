@@ -67,7 +67,7 @@ public class NavigationActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                doubleBackToExitPressedOnce=false;
+                doubleBackToExitPressedOnce = false;
             }
         }, 2000);
     }

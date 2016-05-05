@@ -11,7 +11,7 @@ import eu.execom.instagramlite.fragments.UserProfileFragment_;
 /**
  * The {@link TabAdapter} serves as an adapter to the TabLayout. Here you define how many tabs you
  * will have, what are their titles, and what are the fragments for each of them.
- *
+ * <p/>
  * Created by nikolalukic on 4/23/16.
  */
 public class TabAdapter extends FragmentStatePagerAdapter {

@@ -3,7 +3,6 @@ package eu.execom.instagramlite.fragments;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
