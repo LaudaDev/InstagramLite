@@ -3,6 +3,8 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
+    <string name="description">Description</string>
+    <string name="save_post">Save post</string>
 
     <string name="register">Register</string>
     <string name="name">Name</string>
