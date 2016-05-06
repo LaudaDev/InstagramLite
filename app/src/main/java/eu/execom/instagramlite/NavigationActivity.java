@@ -3,7 +3,6 @@ package eu.execom.instagramlite;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.design.widget.TabLayout;
@@ -25,11 +24,10 @@ import org.androidannotations.annotations.ViewById;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import eu.execom.instagramlite.adapters.TabAdapter;
 import eu.execom.instagramlite.repository.UserRepository;
+import eu.execom.instagramlite.utils.FileUtils;
 
 @EActivity(R.layout.activity_navigation)
 @OptionsMenu(R.menu.menu_options_navigation)
@@ -47,6 +45,9 @@ public class NavigationActivity extends AppCompatActivity {
 
     @Extra
     String username;
+
+    @Bean
+    FileUtils fileUtils;
 
     @Bean
     UserRepository userRepository;
@@ -68,7 +69,7 @@ public class NavigationActivity extends AppCompatActivity {
 
     @AfterInject
     void welcomeUser() {
-        Toast.makeText(NavigationActivity.this, String.format(getString(R.string.welcome_login_msg), username), Toast.LENGTH_LONG).show();
+        Toast.makeText(NavigationActivity.this, String.format(getString(R.string.welcome_login_msg), username), Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -103,18 +104,16 @@ public class NavigationActivity extends AppCompatActivity {
     void newPost() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-
-            File photoFile = null;
             try {
-                photoFile = createImageFile();
-            } catch (IOException e) {
-                Log.e(TAG, e.getMessage(), e);
-                e.printStackTrace();
-            }
+                final File photoFile = fileUtils.createImageFile();
 
-            if (photoFile != null) {
+                currentPhotoPath = photoFile.getAbsolutePath();
+                Log.d(TAG, currentPhotoPath);
+
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photoFile));
                 startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+            } catch (IOException e) {
+                Log.e(TAG, e.getMessage(), e);
             }
         }
     }
@@ -123,28 +122,10 @@ public class NavigationActivity extends AppCompatActivity {
     void onResult(int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
             Toast.makeText(this, currentPhotoPath, Toast.LENGTH_LONG).show();
-            Log.d("paht", currentPhotoPath);
+            Log.d(TAG, currentPhotoPath);
 
             NewPostActivity_.intent(this).imagePath(currentPhotoPath).start();
         }
-    }
-
-    private File createImageFile() throws IOException {
-        // Create an image file name
-        final String timeStamp = String.valueOf(System.currentTimeMillis());
-        final String imageFileName = "JPEG_" + timeStamp + "_";
-        Log.d("imageFileName", imageFileName);
-        final File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-        final File instagramLiteStorageDir = new File(String.format("%s/InstagramLite", storageDir.getAbsolutePath()));
-        instagramLiteStorageDir.mkdir();
-        final File image = File.createTempFile(
-                imageFileName,           /* prefix    */
-                ".jpg",                  /* suffix    */
-                instagramLiteStorageDir  /* directory */
-        );
-        currentPhotoPath = image.getAbsolutePath();
-        Log.d(TAG, currentPhotoPath);
-        return image;
     }
 
     @Override
