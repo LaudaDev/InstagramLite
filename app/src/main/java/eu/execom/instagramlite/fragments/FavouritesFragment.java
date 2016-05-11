@@ -14,8 +14,11 @@ import eu.execom.instagramlite.R;
 import eu.execom.instagramlite.adapters.UserPostsAdapter;
 import eu.execom.instagramlite.database.dao.wrapper.UserPostDAOWrapper;
 
+/**
+ * Created by nikolalukic on 5/11/16.
+ */
 @EFragment(R.layout.fragment_post)
-public class PostFragment extends Fragment {
+public class FavouritesFragment extends Fragment {
 
     @ViewById
     SwipeRefreshLayout swipeRefresh;
@@ -33,12 +36,12 @@ public class PostFragment extends Fragment {
     @UiThread(delay = 100)
     void setAdapter() {
         listView.setAdapter(userPostsAdapter);
-        userPostsAdapter.setPosts(userPostDAOWrapper.findAll());
+        userPostsAdapter.setPosts(userPostDAOWrapper.findFavorited());
 
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                userPostsAdapter.setPosts(userPostDAOWrapper.findAll());
+                userPostsAdapter.setPosts(userPostDAOWrapper.findFavorited());
                 swipeRefresh.setRefreshing(false);
             }
         });
@@ -48,7 +51,7 @@ public class PostFragment extends Fragment {
     public void onResume() {
         super.onResume();
         if (userPostsAdapter != null) {
-            userPostsAdapter.setPosts(userPostDAOWrapper.findAll());
+            userPostsAdapter.setPosts(userPostDAOWrapper.findFavorited());
         }
     }
 

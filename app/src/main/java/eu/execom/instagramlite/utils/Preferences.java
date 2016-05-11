@@ -8,16 +8,6 @@ import org.androidannotations.annotations.sharedpreferences.SharedPref;
 @SharedPref(SharedPref.Scope.UNIQUE)
 public interface Preferences {
 
-    boolean loggedIn();
-
-    boolean registered();
-
-    String username();
-
-    String password();
-
-    String email();
-
-    String imageUrl();
+    int id();
 
 }
