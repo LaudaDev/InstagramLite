@@ -8,6 +8,8 @@ import java.util.List;
  */
 public class User {
 
+    private int id;
+
     private String username;
 
     private String imageUrl;
@@ -65,5 +67,13 @@ public class User {
 
     public void setFavouritePosts(List<UserPost> favouritePosts) {
         this.favouritePosts = favouritePosts;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
