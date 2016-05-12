@@ -5,10 +5,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import eu.execom.instagramlite.models.UserPost;
 import eu.execom.instagramlite.repository.UserPostRepository;
 import eu.execom.instagramlite.views.GridPictureItemView;
 import eu.execom.instagramlite.views.GridPictureItemView_;
@@ -22,20 +27,32 @@ import eu.execom.instagramlite.views.GridPictureItemView_;
 @EBean
 public class MyPicturesGridAdapter extends BaseAdapter {
 
-    @Bean
-    UserPostRepository userPostRepository;
+    private List<UserPost> posts;
+
+    public List<UserPost> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<UserPost> posts) {
+        this.posts = posts;
+        notifyDataSetChanged();
+    }
+    @AfterInject
+    void initList() {
+        posts = new ArrayList<>();
+    }
 
     @RootContext
     Context context;
 
     @Override
     public int getCount() {
-        return userPostRepository.getMockDrawable().length;
+        return posts.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return userPostRepository.getMockDrawable()[position];
+        return posts.get(position);
     }
 
     @Override
@@ -52,7 +69,7 @@ public class MyPicturesGridAdapter extends BaseAdapter {
             gridPictureItemView = (GridPictureItemView) convertView;
         }
 
-        gridPictureItemView.bind((int) getItem(position));
+        gridPictureItemView.bind(posts.get(position));
 
         return gridPictureItemView;
     }

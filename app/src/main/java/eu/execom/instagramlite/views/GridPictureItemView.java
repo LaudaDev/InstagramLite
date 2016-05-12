@@ -1,13 +1,17 @@
 package eu.execom.instagramlite.views;
 
 import android.content.Context;
+import android.net.Uri;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import com.facebook.drawee.view.SimpleDraweeView;
 
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
 
 import eu.execom.instagramlite.R;
+import eu.execom.instagramlite.models.UserPost;
 
 /**
  * {@link GridPictureItemView} represents the items in the grid view on the user profile fragment.
@@ -18,14 +22,14 @@ import eu.execom.instagramlite.R;
 public class GridPictureItemView extends LinearLayout {
 
     @ViewById
-    ImageView picture;
+    SimpleDraweeView picture;
 
     public GridPictureItemView(Context context) {
         super(context);
     }
 
-    public void bind(int drawable) {
-        picture.setImageResource(drawable);
+    public void bind(UserPost post) {
+        picture.setImageURI(Uri.parse(post.getImageUrl()));
     }
 
 }

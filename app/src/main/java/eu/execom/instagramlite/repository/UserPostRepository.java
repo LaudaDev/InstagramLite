@@ -28,8 +28,6 @@ public class UserPostRepository {
 
     private List<UserPost> userPosts;
 
-    private int[] mockDrawable = new int[20];
-
     @AfterInject
     void mockData() {
         userPosts = new ArrayList<>();
@@ -39,17 +37,10 @@ public class UserPostRepository {
                     "Workshop in progress!", i % 2 == 0 ? kahriman : ja));
         }
 
-        for (int i = 0; i < mockDrawable.length; i++) {
-            mockDrawable[i] = i % 2 == 0 ? R.drawable.cupcake : R.drawable.execom;
-        }
     }
 
     public List<UserPost> getUserPosts() {
         return userPosts;
-    }
-
-    public int[] getMockDrawable() {
-        return mockDrawable;
     }
 
 }

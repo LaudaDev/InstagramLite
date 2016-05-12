@@ -13,9 +13,11 @@ import eu.execom.instagramlite.R;
 import eu.execom.instagramlite.adapters.UserPostsAdapter;
 import eu.execom.instagramlite.repository.UserPostRepository;
 
+/**
+ * Created by nikolalukic on 5/13/16.
+ */
 @EFragment(R.layout.fragment_post)
-public class PostFragment extends Fragment {
-
+public class FavouritesFragment extends Fragment {
     @ViewById
     ListView listView;
 

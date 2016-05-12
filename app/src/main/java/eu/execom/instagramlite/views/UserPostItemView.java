@@ -48,7 +48,7 @@ public class UserPostItemView extends FrameLayout {
             userImage.setImageURI(Uri.parse(userPost.getUser().getImageUrl()));
         }
         username.setText(userPost.getUser().getUsername());
-        image.setImageURI(Uri.parse(userPost.getImageRes()));
+        image.setImageURI(Uri.parse(userPost.getImageUrl()));
         description.setText(userPost.getDescription());
     }
 

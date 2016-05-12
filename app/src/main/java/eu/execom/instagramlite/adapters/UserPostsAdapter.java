@@ -5,12 +5,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import org.androidannotations.annotations.Bean;
+import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import eu.execom.instagramlite.models.UserPost;
-import eu.execom.instagramlite.repository.UserPostRepository;
 import eu.execom.instagramlite.views.UserPostItemView;
 import eu.execom.instagramlite.views.UserPostItemView_;
 
@@ -22,20 +24,32 @@ import eu.execom.instagramlite.views.UserPostItemView_;
 @EBean
 public class UserPostsAdapter extends BaseAdapter {
 
-    @Bean
-    UserPostRepository userPostRepository;
+    private List<UserPost> posts;
+
+    public List<UserPost> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<UserPost> posts) {
+        this.posts = posts;
+        notifyDataSetChanged();
+    }
+    @AfterInject
+    void initList() {
+        posts = new ArrayList<>();
+    }
 
     @RootContext
     Context context;
 
     @Override
     public int getCount() {
-        return userPostRepository.getUserPosts().size();
+        return posts.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return userPostRepository.getUserPosts().get(position);
+        return posts.get(position);
     }
 
     @Override

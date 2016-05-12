@@ -15,6 +15,7 @@ import org.androidannotations.annotations.ViewById;
 import eu.execom.instagramlite.R;
 import eu.execom.instagramlite.adapters.MyPicturesGridAdapter;
 import eu.execom.instagramlite.models.User;
+import eu.execom.instagramlite.repository.UserPostRepository;
 import eu.execom.instagramlite.repository.UserRepository;
 
 /**
@@ -22,6 +23,9 @@ import eu.execom.instagramlite.repository.UserRepository;
  */
 @EFragment(R.layout.fragment_user_profile)
 public class UserProfileFragment extends Fragment {
+
+    @Bean
+    UserPostRepository userPostRepository;
 
     @Bean
     UserRepository userRepository;
@@ -43,6 +47,7 @@ public class UserProfileFragment extends Fragment {
         final User user = userRepository.getUser();
         name.setText(user.getUsername());
         picturesGrid.setAdapter(myPicturesGridAdapter);
+        myPicturesGridAdapter.setPosts(userPostRepository.getUserPosts());
 
         // check if user image exists, and if so, set it in the view.
         if (user.getImageUrl() != null && user.getImageUrl().isEmpty()) {

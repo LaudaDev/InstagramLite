@@ -5,6 +5,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v7.app.AppCompatActivity;
 
+import eu.execom.instagramlite.fragments.FavouritesFragment;
+import eu.execom.instagramlite.fragments.FavouritesFragment_;
 import eu.execom.instagramlite.fragments.PostFragment_;
 import eu.execom.instagramlite.fragments.UserProfileFragment_;
 
@@ -39,7 +41,7 @@ public class TabAdapter extends FragmentStatePagerAdapter {
             case 0:
                 return PostFragment_.builder().build();
             case 1:
-                return PostFragment_.builder().build();
+                return FavouritesFragment_.builder().build();
             case 2:
                 return UserProfileFragment_.builder().build();
             default:

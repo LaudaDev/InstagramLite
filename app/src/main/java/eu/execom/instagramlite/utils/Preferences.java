@@ -20,4 +20,6 @@ public interface Preferences {
 
     String imageUrl();
 
+    int id();
+
 }
