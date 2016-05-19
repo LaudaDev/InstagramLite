@@ -11,15 +11,15 @@ import org.androidannotations.annotations.EditorAction;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.sharedpreferences.Pref;
 
+import eu.execom.instagramlite.database.dao.wrapper.UserDAOWrapper;
 import eu.execom.instagramlite.models.User;
-import eu.execom.instagramlite.repository.UserRepository;
 import eu.execom.instagramlite.utils.Preferences_;
 
 @EActivity(R.layout.activity_register)
 public class RegisterActivity extends AppCompatActivity {
 
     @Bean
-    UserRepository userRepository;
+    UserDAOWrapper userDAOWrapper;
 
     @ViewById
     EditText username;
@@ -40,15 +40,13 @@ public class RegisterActivity extends AppCompatActivity {
         user.setEmail(email.getText().toString());
         user.setPassword(password.getText().toString());
         user.setUsername(username.getText().toString());
-        final boolean success = userRepository.registerUser(user);
 
-        if (!success)
+        if (!userDAOWrapper.emailAvailable(user.getEmail())) {
             Toast.makeText(this, getString(R.string.register_fail_msg), Toast.LENGTH_LONG).show();
-        else {
+        } else {
+            userDAOWrapper.registerUser(user);
             Toast.makeText(this, getString(R.string.register_success_msg), Toast.LENGTH_LONG).show();
-            resetFields();
-            prefs.loggedIn().put(true);
-            NavigationActivity_.intent(this).username(userRepository.getUser().getUsername()).start();
+            NavigationActivity_.intent(this).start();
         }
     }
 

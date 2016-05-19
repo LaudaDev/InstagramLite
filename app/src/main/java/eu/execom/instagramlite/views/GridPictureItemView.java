@@ -2,9 +2,9 @@ package eu.execom.instagramlite.views;
 
 import android.content.Context;
 import android.net.Uri;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.facebook.common.util.UriUtil;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import org.androidannotations.annotations.EViewGroup;
@@ -28,8 +28,8 @@ public class GridPictureItemView extends LinearLayout {
         super(context);
     }
 
-    public void bind(UserPost post) {
-        picture.setImageURI(Uri.parse(post.getImageUrl()));
+    public void bind(UserPost userPost) {
+        picture.setImageURI(new Uri.Builder().scheme(UriUtil.LOCAL_FILE_SCHEME).path(userPost.getImageUrl()).build());
     }
 
 }

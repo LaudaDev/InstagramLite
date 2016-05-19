@@ -14,9 +14,9 @@ import org.androidannotations.annotations.ViewById;
 
 import eu.execom.instagramlite.R;
 import eu.execom.instagramlite.adapters.MyPicturesGridAdapter;
+import eu.execom.instagramlite.database.dao.wrapper.UserDAOWrapper;
+import eu.execom.instagramlite.database.dao.wrapper.UserPostDAOWrapper;
 import eu.execom.instagramlite.models.User;
-import eu.execom.instagramlite.repository.UserPostRepository;
-import eu.execom.instagramlite.repository.UserRepository;
 
 /**
  * Used for the tab that shows users profile.
@@ -25,10 +25,10 @@ import eu.execom.instagramlite.repository.UserRepository;
 public class UserProfileFragment extends Fragment {
 
     @Bean
-    UserPostRepository userPostRepository;
+    UserDAOWrapper userDAOWrapper;
 
     @Bean
-    UserRepository userRepository;
+    UserPostDAOWrapper userPostDAOWrapper;
 
     @ViewById
     SimpleDraweeView profileImage;
@@ -44,10 +44,10 @@ public class UserProfileFragment extends Fragment {
 
     @AfterViews
     void afterViews() {
-        final User user = userRepository.getUser();
+        final User user = userDAOWrapper.getLoggedInUser();
         name.setText(user.getUsername());
         picturesGrid.setAdapter(myPicturesGridAdapter);
-        myPicturesGridAdapter.setPosts(userPostRepository.getUserPosts());
+        myPicturesGridAdapter.setPosts(userPostDAOWrapper.findAll());
 
         // check if user image exists, and if so, set it in the view.
         if (user.getImageUrl() != null && user.getImageUrl().isEmpty()) {

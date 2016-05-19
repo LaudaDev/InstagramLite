@@ -5,7 +5,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v7.app.AppCompatActivity;
 
-import eu.execom.instagramlite.fragments.FavouritesFragment;
 import eu.execom.instagramlite.fragments.FavouritesFragment_;
 import eu.execom.instagramlite.fragments.PostFragment_;
 import eu.execom.instagramlite.fragments.UserProfileFragment_;

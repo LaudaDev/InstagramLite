@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
+import com.facebook.stetho.Stetho;
 
 import org.androidannotations.annotations.EApplication;
 
@@ -21,6 +22,8 @@ public class InstagramLiteApplication extends Application {
 
         // Initialization of the Fresco library. This is needed if you want to use Fresco.
         Fresco.initialize(this, config);
+
+        Stetho.initializeWithDefaults(this);
     }
 
 }

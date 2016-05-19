@@ -26,6 +26,11 @@ public class UserPostsAdapter extends BaseAdapter {
 
     private List<UserPost> posts;
 
+    @AfterInject
+    void afterInject() {
+        posts = new ArrayList<>();
+    }
+
     public List<UserPost> getPosts() {
         return posts;
     }
@@ -33,10 +38,6 @@ public class UserPostsAdapter extends BaseAdapter {
     public void setPosts(List<UserPost> posts) {
         this.posts = posts;
         notifyDataSetChanged();
-    }
-    @AfterInject
-    void initList() {
-        posts = new ArrayList<>();
     }
 
     @RootContext
